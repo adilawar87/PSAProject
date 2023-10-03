@@ -44,4 +44,8 @@ view: imports {
   measure: count {
     type: count
   }
+  measure: Total {
+    type: sum
+  sql: ${qty} ;;
+  }
 }
