@@ -1,4 +1,4 @@
-connection: "mannai_bq_2"
+connection: "mannai_bigquery_db"
 
 # include all the views
 include: "/views/**/*.view.lkml"
@@ -25,4 +25,3 @@ explore: re_exports {}
 explore: sis_ft_periods_mv {}
 
 explore: sis_ft_ports_mv {}
-

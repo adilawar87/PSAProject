@@ -109,4 +109,8 @@ view: import_export_vw {
     type: count
     drill_fields: [country_name, trade_typename]
   }
+  measure: TotalSum {
+    type: sum
+    sql: ${qty} ;;
+  }
 }
