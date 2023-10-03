@@ -119,7 +119,7 @@ view: import_export_vw {
     sql: ${qty} ;;
   }
 
-  measure: TotalSum3 {
+  measure: TotalSum34 {
     type: sum
     sql: ${qty} ;;
   }
