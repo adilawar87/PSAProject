@@ -1,4 +1,4 @@
-connection: "mannai_bq_2"
+connection: "mannai_bigquery_db"
 
 # include all the views
 include: "/views/**/*.view.lkml"
