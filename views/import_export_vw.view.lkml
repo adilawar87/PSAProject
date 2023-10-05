@@ -12,6 +12,7 @@ view: import_export_vw {
   dimension: country_name {
     type: string
     sql: ${TABLE}.CountryName ;;
+    map_layer_name: countries
   }
   dimension: country_name_arb {
     type: string
@@ -109,18 +110,26 @@ view: import_export_vw {
     type: count
     drill_fields: [country_name, trade_typename]
   }
+  measure: TotalQuantity {
+    type: sum
+    sql: ${qty} ;;
+  }
+
   measure: TotalSum {
+    hidden: yes
     type: sum
     sql: ${qty} ;;
   }
 
-  measure: TotalSum2 {
+  measure: TotalValue {
     type: sum
-    sql: ${qty} ;;
+    sql: ${value} ;;
+    value_format: "0.00,,, \" M\""
+
   }
 
-  measure: TotalSum34 {
+  measure: TotalWeight {
     type: sum
-    sql: ${qty} ;;
+    sql: ${weight} ;;
   }
 }
