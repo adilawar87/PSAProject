@@ -3,12 +3,12 @@ connection: "mannai_bigquery_db"
 # include all the views
 include: "/views/**/*.view.lkml"
 
-datagroup: psa_project_test2_default_datagroup {
+datagroup: psa_project_test_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
 
-persist_with: psa_project_test2_default_datagroup
+persist_with: psa_project_test_default_datagroup
 
 explore: sis_ft_items_mv {}
 
