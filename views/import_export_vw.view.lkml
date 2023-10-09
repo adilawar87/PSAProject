@@ -128,6 +128,20 @@ view: import_export_vw {
 
   }
 
+  measure: TotalImport {
+    type: sum
+    sql: Case when ${trade_typename} = 'Imports' then ${value} else 0 end ;;
+    value_format: "0.00,,, \" M\""
+
+  }
+
+  measure: TotalExport {
+    type: sum
+    sql: Case when ${trade_typename} = 'ReExports' then ${value} else 0 end ;;
+    value_format: "0.00,,, \" M\""
+
+  }
+
   measure: TotalWeight {
     type: sum
     sql: ${weight} ;;
