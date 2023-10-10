@@ -14,7 +14,8 @@ explore: sis_ft_items_mv {}
 
 explore: sis_ft_countries_mv_v {}
 
-explore: import_export_vw {}
+explore: import_export_vw {
+}
 
 explore: imports {}
 
@@ -25,3 +26,5 @@ explore: re_exports {}
 explore: sis_ft_periods_mv {}
 
 explore: sis_ft_ports_mv {}
+
+explore: ports_coordinates {}

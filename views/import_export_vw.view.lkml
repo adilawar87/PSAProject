@@ -15,11 +15,13 @@ view: import_export_vw {
     map_layer_name: countries
   }
   dimension: country_name_arb {
+    label: "دولة المنشأ"
     type: string
     sql: ${TABLE}.CountryName_ARB ;;
   }
   dimension: hs8_arb {
     type: string
+    label: "التفاصيل"
     sql: ${TABLE}.HS8_ARB ;;
   }
   dimension: hs8_eng {
@@ -28,7 +30,9 @@ view: import_export_vw {
   }
   dimension: item_code {
     type: number
+    label: "HS8"
     sql: ${TABLE}.ItemCode ;;
+    value_format_name: id
   }
   dimension: item_desc {
     type: string
@@ -70,6 +74,16 @@ view: import_export_vw {
     type: number
     sql: ${TABLE}.QRT ;;
   }
+
+  dimension: Quarter {
+    type: string
+    sql:  case when ${qrt} = 1 then 'Q1'
+               when ${qrt} = 2  then 'Q2'
+               when ${qrt} = 3  then 'Q3'
+          Else 'Q4'
+          End;;
+  }
+
   dimension: qty {
     type: number
     sql: ${TABLE}.QTY ;;
@@ -105,6 +119,7 @@ view: import_export_vw {
   dimension: year {
     type: number
     sql: ${TABLE}.YEAR ;;
+    value_format_name: id
   }
   measure: count {
     type: count
@@ -122,6 +137,7 @@ view: import_export_vw {
   }
 
   measure: TotalValue {
+    label: "Total Volume"
     type: sum
     sql: ${value} ;;
     value_format: "0.00,,, \" M\""
