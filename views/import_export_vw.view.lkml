@@ -38,6 +38,8 @@ view: import_export_vw {
     type: string
     sql: ${TABLE}.Item_desc ;;
   }
+
+
   dimension: item_desc_arb {
     type: string
     sql: ${TABLE}.Item_desc_ARB ;;
