@@ -1,14 +1,21 @@
 view: import_export_vw {
-  sql_table_name: `PSA_POC_DS.ImportExport_VW` ;;
+  sql_table_name: `PSA_POC_DS.ImportExport_VW_V2` ;;
 
-  dimension: country_int_code {
-    type: number
-    sql: ${TABLE}.Country_INT_CODE ;;
-  }
-  dimension: country_letter_code {
+##  dimension: country_int_code {
+##    type: number
+##    sql: ${TABLE}.Country_INT_CODE ;;
+##  }
+
+ dimension: rowid {
     type: string
-    sql: ${TABLE}.COUNTRY_LETTER_CODE ;;
+    primary_key: yes
+    sql: ${TABLE}.RowId ;;
   }
+
+##  dimension: country_letter_code {
+##    type: string
+##    sql: ${TABLE}.COUNTRY_LETTER_CODE ;;
+##  }
   dimension: country_name {
     type: string
     sql: ${TABLE}.CountryName ;;
@@ -34,36 +41,58 @@ view: import_export_vw {
     sql: ${TABLE}.ItemCode ;;
     value_format_name: id
   }
-  dimension: item_desc {
-    type: string
-    sql: ${TABLE}.Item_desc ;;
-  }
+
+## dimension: item_desc {
+##    type: string
+##    sql: ${TABLE}.Item_desc ;;
+##  }
 
 
-  dimension: item_desc_arb {
-    type: string
-    sql: ${TABLE}.Item_desc_ARB ;;
-  }
-  dimension: mode_arb {
-    type: string
-    sql: ${TABLE}.MODE_ARB ;;
-  }
-  dimension: mode_eng {
-    type: string
-    sql: ${TABLE}.MODE_ENG ;;
-  }
+##  dimension: item_desc_arb {
+##    type: string
+##    sql: ${TABLE}.Item_desc_ARB ;;
+##  }
+
+##  dimension: mode_arb {
+##    type: string
+##    sql: ${TABLE}.MODE_ARB ;;
+##  }
+##  dimension: mode_eng {
+##    type: string
+##    sql: ${TABLE}.MODE_ENG ;;
+##  }
+
   dimension: month {
     type: number
     sql: ${TABLE}.Month ;;
   }
-  dimension: port_code {
-    type: number
-    sql: ${TABLE}.PORT_CODE ;;
-  }
-  dimension: port_name_arb {
+
+  dimension: MonthName {
     type: string
-    sql: ${TABLE}.PORT_NAME_ARB ;;
+    sql: case when ${month}=1 then 'Jan'
+              when ${month}=2 then 'Feb'
+              when ${month}=3 then 'Mar'
+              when ${month}=4 then 'Apr'
+              when ${month}=5 then 'May'
+              when ${month}=6 then 'Jun'
+              when ${month}=7 then 'Jul'
+              when ${month}=8 then 'Aug'
+              when ${month}=9 then 'Sep'
+              when ${month}=10 then 'Oct'
+              when ${month}=11 then 'Nov'
+              Else 'Dec'
+              End ;;
+
   }
+
+##  dimension: port_code {
+##    type: number
+##    sql: ${TABLE}.PORT_CODE ;;
+##  }
+##  dimension: port_name_arb {
+##    type: string
+##    sql: ${TABLE}.PORT_NAME_ARB ;;
+##  }
   dimension: port_name_eng {
     type: string
     sql: ${TABLE}.PORT_NAME_ENG ;;
@@ -72,6 +101,7 @@ view: import_export_vw {
     type: number
     sql: ${TABLE}.QATAR_PORT ;;
   }
+
   dimension: qrt {
     type: number
     sql: ${TABLE}.QRT ;;
@@ -90,18 +120,23 @@ view: import_export_vw {
     type: number
     sql: ${TABLE}.QTY ;;
   }
-  dimension: sitc1_arb {
-    type: string
-    sql: ${TABLE}.SITC1_ARB ;;
-  }
-  dimension: sitc1_eng {
-    type: string
-    sql: ${TABLE}.SITC1_ENG ;;
-  }
+
+##  dimension: sitc1_arb {
+##    type: string
+##    sql: ${TABLE}.SITC1_ARB ;;
+##  }
+
+
+##  dimension: sitc1_eng {
+##    type: string
+##    sql: ${TABLE}.SITC1_ENG ;;
+##  }
+
   dimension: trade_country {
     type: number
     sql: ${TABLE}.TRADE_COUNTRY ;;
   }
+
   dimension: trade_type {
     type: string
     sql: ${TABLE}.TRADE_TYPE ;;
